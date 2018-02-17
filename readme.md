@@ -7,5 +7,6 @@ Build/run containers:
     $ docker-compose build
     $ docker-compose up -d
     $ ./docker/console composer install
+    $ ./docker/console php artisan db:install
 
 Run application: http://localhost:835
