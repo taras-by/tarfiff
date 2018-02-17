@@ -16,6 +16,9 @@ class CreateTariffsTable extends Migration
         Schema::create('tariffs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('key');
+            $table->text('config');
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }
