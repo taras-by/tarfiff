@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+
+  app:
+    container_name: tariff.app
+    build: docker/php
+    volumes:
+      - .:/var/www
+      - ./docker/php/.composer:/opt/composer
+
+  nginx:
+    container_name: tariff.nginx
+    build: docker/nginx
+    volumes_from:
+      - app
+    ports:
+      - 835:80
+
+  db:
+    container_name: tariff.mysql
+    image: mysql
+    volumes:
+      - ./docker/mysql/.db:/var/lib/mysql
+    env_file:
+      - ./docker/mysql/env
+    ports:
+        - 850:3306
+
+  phpmyadmin:
+    container_name: tariff.phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - 864:80
