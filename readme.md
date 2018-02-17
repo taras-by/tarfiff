@@ -9,4 +9,16 @@ Build/run containers:
     $ ./docker/console composer install
     $ ./docker/console php artisan db:install
 
-Run application: http://localhost:835
+Get tariffs: 
+
+    curl -X GET \
+      http://localhost:835/api/tariffs \
+      -H 'cache-control: no-cache' \
+      -H 'content-type: application/json'
+      
+Get tariff with ID = 1:
+
+    curl -X GET \
+      http://localhost:835/api/tariffs/1 \
+      -H 'cache-control: no-cache' \
+      -H 'content-type: application/json'
