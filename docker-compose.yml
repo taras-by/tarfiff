@@ -17,18 +17,12 @@ services:
     ports:
       - 835:80
 
-  db:
-    container_name: tariff.mysql
-    image: mysql
+  postgresql:
+    container_name: tariff.postgresql
+    image: postgres
     volumes:
-      - ./docker/mysql/.db:/var/lib/mysql
+      - ./docker/postgresql/.db:/var/lib/postgresql/data:rw
     env_file:
-      - ./docker/mysql/env
+      - ./docker/postgresql/env
     ports:
-        - 850:3306
-
-  phpmyadmin:
-    container_name: tariff.phpmyadmin
-    image: phpmyadmin/phpmyadmin
-    ports:
-        - 864:80
+      - 851:5432

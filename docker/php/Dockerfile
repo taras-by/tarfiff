@@ -25,8 +25,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer --version
 
 # Run docker-php-ext-install for available extensions
-RUN docker-php-ext-configure intl \
-    && docker-php-ext-install pdo pdo_mysql opcache intl
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libpq-dev \
+    && docker-php-ext-install pdo_pgsql pdo_mysql opcache
 
 # install xdebug
 RUN pecl install xdebug

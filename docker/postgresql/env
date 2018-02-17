@@ -1,0 +1,3 @@
+POSTGRES_DB=homestead
+POSTGRES_USER=homestead
+POSTGRES_PASSWORD=secret
