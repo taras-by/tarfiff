@@ -19,13 +19,13 @@ Get tariffs:
 Request with filter:
     
     curl -X GET \
-      'http://localhost:835/api/tariffs?filter=%7B%22ids%22%3A%5B1%2C3%5D%2C%22keys%22%3A%5B%22baby_car_seat%22%5D%7D' \
+      'http://localhost:835/api/tariffs?filter=%7B%22ids%22%3A%5B1%2C3%5D%2C%22keys%22%3A%5B%22driving%22%5D%7D' \
       -H 'cache-control: no-cache' \
       -H 'content-type: application/json'
       
 The "filter" parameter is a JSON string with urlencoding:
 
-    {"ids":[1,3],"keys":["baby_car_seat"]}
+    {"ids":[1,3],"keys":["driving"]}
     
 
 Get tariff with ID = 1:
