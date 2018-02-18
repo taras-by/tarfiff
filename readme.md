@@ -4,9 +4,11 @@ Build/run containers and install Application:
 
     $ git clone git@github.com:taras-by/tariff.git
     $ cd tariff
+    $ cp .env.example .env
     $ docker-compose build
     $ docker-compose up -d
     $ ./docker/console composer install
+    $ ./docker/console php artisan key:generate
     $ ./docker/console php artisan db:install
 
 Get tariffs: 
