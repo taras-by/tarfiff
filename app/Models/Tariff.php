@@ -1,16 +1,34 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property bool $is_active
+ * @property mixed $prices
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ */
 class Tariff extends Model
 {
     protected $casts = [
-        'config' => 'array',
         'is_active' => 'boolean',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function prices()
+    {
+        return $this->hasMany('App\Models\Price');
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeActive($query)
     {
         return $query->where('is_active', true);

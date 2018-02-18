@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTariffsTable extends Migration
+class CreatePricesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateTariffsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tariffs', function (Blueprint $table) {
+        Schema::create('prices', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('key');
-            $table->boolean('is_active')->default(false);
+            $table->string('type');
+            $table->decimal('price');
+            $table->text('config')->nullable(true);
+            $table->integer('tariff_id')->unsigned()->nullable(true);
+            $table->foreign('tariff_id')->references('id')->on('tariffs')->onDelete('CASCADE');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -29,6 +30,6 @@ class CreateTariffsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tariffs');
+        Schema::dropIfExists('prices');
     }
 }

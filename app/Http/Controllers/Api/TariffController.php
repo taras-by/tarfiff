@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\TariffResource;
-use App\Model\Tariff;
+use App\Models\Tariff;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -27,7 +27,7 @@ class TariffController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Tariff $tariff
+     * @param  \App\Models\Tariff $tariff
      * @return TariffResource|null
      */
     public function show(Tariff $tariff)
