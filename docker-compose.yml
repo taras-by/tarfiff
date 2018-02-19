@@ -7,7 +7,6 @@ services:
     build: docker/php
     volumes:
       - .:/var/www
-      - ./docker/php/composer:/opt/composer
 
   nginx:
     container_name: tariff.nginx
