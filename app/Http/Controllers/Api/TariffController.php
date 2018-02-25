@@ -6,6 +6,7 @@ use App\Http\Requests\TariffRequest;
 use App\Http\Resources\TariffResource;
 use App\Models\Tariff;
 use App\Http\Controllers\Controller;
+use App\Repositories\TariffRepository;
 
 class TariffController extends Controller
 {
@@ -13,14 +14,12 @@ class TariffController extends Controller
      * Display a listing of the resource.
      *
      * @param TariffRequest $request
+     * @param TariffRepository $repository
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(TariffRequest $request)
+    public function index(TariffRequest $request, TariffRepository $repository)
     {
-        $tariffs = Tariff::query()
-            ->active()
-            ->filter($request->get('filter'))
-            ->get();
+        $tariffs = $repository->getByFilter($request->get('filter'));
 
         return TariffResource::collection($tariffs);
     }
