@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\TariffRequest;
 use App\Http\Resources\TariffResource;
 use App\Models\Tariff;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class TariffController extends Controller
@@ -12,9 +12,10 @@ class TariffController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param TariffRequest $request
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(Request $request)
+    public function index(TariffRequest $request)
     {
         $tariffs = Tariff::query()
             ->active()
@@ -32,7 +33,7 @@ class TariffController extends Controller
      */
     public function show(Tariff $tariff)
     {
-        if(!$tariff->is_active){
+        if (!$tariff->is_active) {
             abort(404, 'Tariff not found');
         }
 

@@ -41,7 +41,7 @@ class Tariff extends Model
      */
     public function scopeFilter($query, $filter)
     {
-        $filter = @json_decode($filter);
+        $filter = json_decode($filter);
 
         if (isset($filter->ids)) {
             $query->whereIn('id', $filter->ids);
